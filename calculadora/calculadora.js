@@ -8,8 +8,8 @@ const botones = Array.from(document.querySelectorAll('.btn'));
 let op = ''
 let numero = ''
 let nuevoNum=""
-let numAntes = ""
 let otp= ""
+let opNEW=""
 // Nos permite colocar el texto del btn en el value del input
 //'Función dentro de una función "closure"'
 // Collback, función que pasa dentro de un parámetro dentro de otra función
@@ -42,9 +42,15 @@ const calculadora = (valor) => {
             input.value += valor
             nuevoNum += valor
             op += parseFloat(numero) + valor
+            
             numero = ""
     } else if (valor == 'Enter' || valor=='=') {
-        input.value = eval(op + parseFloat(numero))
+      if (input.value.includes("(")) {
+        input.value = opNEW
+        
+      }else{
+        input.value = eval(op+parseInt(numero))
+      }  
         
         op = ''
         numero = input.value     
@@ -59,18 +65,23 @@ const calculadora = (valor) => {
       input.value += valor
       numAntes = numero
       nuevoNum = ""
-      
+      opNEW=op
+
     }
 
      if ( valor == ')') {
+      op = ""
       input.value += valor
       console.log("acá va el número : ",numero)
       console.log("acá va el nuevoNúm: " , nuevoNum);
-      console.log("acá va el numantes: ", numAntes);
       console.log("acá aparece el op ", op);
       
       otp = eval(nuevoNum)
-      console.log(otp);    
+      console.log(otp);   
+      opNEW = opNEW + otp +op
+      opNEW = eval(opNEW)
+      console.log(opNEW);
+      
     }
     
   }
