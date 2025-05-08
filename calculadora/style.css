@@ -5,11 +5,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f3f3f3;
+    background-color: black;
 }
 
 .calculator {
     background-color: #fff;
+    border: solid 3px gray;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -25,7 +26,7 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #e2e2e2;
 }
 
 .buttons {

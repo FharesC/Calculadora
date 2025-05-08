@@ -61,8 +61,9 @@ const calculadora = (valor) => {
             }
 
         }else{
-            console.log('Expresión mal formada')
-        }
+            input.value= "Expresión malformada"
+            return
+        } 
         
         op2 = op2.replaceAll(')(', ')*(')
 
@@ -81,4 +82,6 @@ const calculadora = (valor) => {
         op = ''
         numero = ''
     }
+    const display = document.getElementById("display");
+    display.scrollLeft = display.scrollWidth;
 }
