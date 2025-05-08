@@ -7,9 +7,6 @@ const botones = Array.from(document.querySelectorAll('.btn'));
 //op mantendrá la operación completa, ejemplo 25+10-30
 let op = ''
 let numero = ''
-let nuevoNum=""
-let otp= ""
-let opNEW=""
 // Nos permite colocar el texto del btn en el value del input
 //'Función dentro de una función "closure"'
 // Collback, función que pasa dentro de un parámetro dentro de otra función
@@ -38,50 +35,34 @@ const calculadora = (valor) => {
         console.log();
             
       }
-      else if (valor == '/' || valor == '+'  || valor == '-' || valor == '*' ) {
-            input.value += valor
-            nuevoNum += valor
-            op += parseFloat(numero) + valor
-            
-            numero = ""
-    } else if (valor == 'Enter' || valor=='=') {
-      if (input.value.includes("(")) {
-        input.value = opNEW
+      else if(valor == '+' || valor == '-' || valor == '*' || valor == '/' || valor == '(' || valor == ')' ){
+        //123481+   
+        input.value = input.value + valor
+        //     123481+
+        op = numero != '' ? op  + parseFloat(numero) + valor : op + valor
+        numero = ''
+    }
+    else if(valor == 'Enter' || valor == '='){       
+        let op3;
+        for(let i =0; i < op.length; i++)
+        {
+            if(op[i] == '(' && !isNaN(op[0])){
+                if(!"/*+-".includes(op[i-1])){
+                    op3 = op.slice(0, i).concat('*')
+                    op4 = op.slice(i)
+                    op = op3 + op4
+                }
+            }
+        }        
         
-      }else{
-        input.value = eval(op+parseInt(numero))
-      }  
-        
+        input.value = numero == '' ? eval(op) : eval(op+parseFloat(numero))
         op = ''
-        numero = input.value     
-        console.log(numero); 
+        numero = input.value
     }
     else if (valor == 'Escape' || valor == "C") {
         input.value = ''
         op = ''
         numero = ''
-    }
-    else if ( valor == '(') {
-      input.value += valor
-      numAntes = numero
-      nuevoNum = ""
-      opNEW=op
-
-    }
-
-     if ( valor == ')') {
-      op = ""
-      input.value += valor
-      console.log("acá va el número : ",numero)
-      console.log("acá va el nuevoNúm: " , nuevoNum);
-      console.log("acá aparece el op ", op);
-      
-      otp = eval(nuevoNum)
-      console.log(otp);   
-      opNEW = opNEW + otp +op
-      opNEW = eval(opNEW)
-      console.log(opNEW);
-      
     }
     
   }
