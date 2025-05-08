@@ -16,5 +16,8 @@ Este es un proyecto ideal para principiantes que quieren comprender cómo integr
 A continuación, veremos cómo escribir el código para cada parte de la calculadora.
 
 
-
+# Vista Previa 📷
 ![image](https://github.com/user-attachments/assets/ad5d6619-767e-4f8e-801f-450548bd7d06)
+
+
+
